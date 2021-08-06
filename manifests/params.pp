@@ -135,6 +135,7 @@ class confluent::params {
   $zookeeper_heap_size = '512m'
 
   $schema_registry_user = 'schema-registry'
+  $schema_registry_package_ensure = 'installed'
   $schema_registry_service = 'schema-registry'
   $schema_registry_manage_service = true
   $schema_registry_service_ensure = 'running'

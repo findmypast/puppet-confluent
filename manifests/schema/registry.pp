@@ -37,6 +37,7 @@
 # @param file_limit File limit to set for the Kafka service (SystemD) only.
 class confluent::schema::registry (
   Variant[String, Array[String]] $kafkastore_connection_url,
+  String $package_ensure = $confluent::params::schema_registry_package_ensure,
   Hash $config                               = {},
   Hash $environment_settings                 = {},
   Stdlib::Unixpath $config_path              = $::confluent::params::schema_registry_config_path,
@@ -106,7 +107,7 @@ class confluent::schema::registry (
   }
 
   package { 'confluent-schema-registry':
-    ensure => latest,
+    ensure => $package_ensure,
     tag    => '__confluent__',
   }
 
