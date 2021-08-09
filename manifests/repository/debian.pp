@@ -4,10 +4,10 @@ class confluent::repository::debian (
 ) inherits confluent::params {
   include ::apt
 
-  apt::key { 'Update Confluent Key':
+  apt::key { '41468433':
     source => $key_url,
     tag    => '__confluent__'
-  }
+  } ->
   apt::source { 'confluent':
     comment  => 'Confluent repo',
     location => $repository_url,
