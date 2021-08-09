@@ -18,6 +18,9 @@ class confluent::repository::debian (
       'deb' => true,
     },
     tag      => '__confluent__'
+  } ~>
+  exec { 'apt-get update':
+    refreshonly => true,
   }
 
   Apt::Key<| tag == '__confluent__' |> -> Apt::Source<| tag == '__confluent__' |> -> Package<| tag == '__confluent__' |>
