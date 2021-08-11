@@ -174,6 +174,10 @@ class confluent::params {
 
   $kafka_package_name = 'confluent-kafka-2.11'
   $kafka_package_ensure = 'installed'
+  $common_package_name = 'confluent-common'
+  $common_package_ensure = 'installed'
+  $rest_utils_package_name = 'confluent-rest-utils'
+  $rest_utils_package_ensure = 'installed'
 
   $mirror_maker_user = 'mirrormaker'
   $mirror_maker_service_prefix = 'mirrormaker-'
