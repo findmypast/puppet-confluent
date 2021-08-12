@@ -1,10 +1,11 @@
 class confluent::repository::debian (
+  String $apt_key                                            = $::confluent::params::apt_key,
   Variant[Stdlib::Httpsurl, Stdlib::Httpurl] $key_url        = $::confluent::params::key_url,
   Variant[Stdlib::Httpsurl, Stdlib::Httpurl] $repository_url = $::confluent::params::repository_url
 ) inherits confluent::params {
   include ::apt
 
-  apt::key { '0C2BF624':
+  apt::key { $apt_key:
     source => $key_url,
     tag    => '__confluent__'
   } ->
