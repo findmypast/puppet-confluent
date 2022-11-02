@@ -7,8 +7,7 @@ class confluent::repository::debian (
 
   apt::key { $apt_key:
     source => $key_url,
-    tag    => '__confluent__',
-    ensure => 'refreshed',
+    tag    => '__confluent__'
   } ->
   apt::source { 'confluent':
     comment  => 'Confluent repo',
