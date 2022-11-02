@@ -216,7 +216,7 @@ class confluent::params {
       $ksql_environment_path = '/etc/default/ksql'
       $mirror_maker_environment_path_prefix = '/etc/default/mirrormaker-'
 
-      $apt_key = "41468433"
+      $apt_key = "CBBB821E8FAF364F79835C438B1DA6120C2BF624"
       $key_url = "http://packages.confluent.io/deb/${confluent_version}/archive.key"
       $repository_url = "http://packages.confluent.io/deb/${confluent_version}"
     }
