@@ -24,5 +24,6 @@ class confluent::repository::debian (
     refreshonly => true,
   }
 
-  Apt::Key<| tag == '__confluent__' |> -> Apt::Source<| tag == '__confluent__' |> -> Package<| tag == '__confluent__' |>
+  # The following line is disabled, since it caused a dependency cycle on puppet version 7
+  # Apt::Key<| tag == '__confluent__' |> -> Apt::Source<| tag == '__confluent__' |> -> Package<| tag == '__confluent__' |>
 }
