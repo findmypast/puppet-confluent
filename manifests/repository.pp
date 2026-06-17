@@ -2,7 +2,7 @@
 #
 #
 class confluent::repository {
-  case $::osfamily {
+  case $facts['os']['family'] {
     'RedHat': {
       include ::confluent::repository::redhat
     }
@@ -10,7 +10,7 @@ class confluent::repository {
       include ::confluent::repository::debian
     }
     default: {
-      fail("${::osfamily} is not supported.")
+      fail("${facts['os']['family']} is not supported.")
     }
   }
 }

@@ -1,4 +1,4 @@
-# Class is used to configure the repository for $::osfamily == 'RedHat'
+# Class is used to configure the repository for $facts['os']['family']  == 'RedHat'
 #
 #
 class confluent::repository::redhat (
@@ -6,7 +6,6 @@ class confluent::repository::redhat (
   Variant[Stdlib::Httpsurl, Stdlib::Httpurl] $repository_url      = $::confluent::params::repository_url,
   Variant[Stdlib::Httpsurl, Stdlib::Httpurl] $gpgkey_url          = $::confluent::params::gpgkey_url
 ) inherits confluent::params {
-
   yumrepo { 'Confluent':
     ensure   => 'present',
     baseurl  => $repository_url,

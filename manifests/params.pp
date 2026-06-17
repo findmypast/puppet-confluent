@@ -119,7 +119,7 @@ class confluent::params {
     'log4j.additivity.state.change.logger'               => false,
     'log4j.logger.kafka.authorizer.logger'               => 'WARN, authorizer',
     'log4j.additivity.kafka.authorizer.logger'           => false,
-    }
+  }
 
   $zookeeper_user = 'zookeeper'
   $zookeeper_service = 'zookeeper'
@@ -184,7 +184,7 @@ class confluent::params {
   $mirror_maker_log_path = '/var/log/mirrormaker'
   $mirror_maker_config_root = '/etc/kafka/mirrormaker'
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'RedHat': {
       $connect_distributed_environment_path = '/etc/sysconfig/kafka-connect-distributed'
       $connect_standalone_environment_path = '/etc/sysconfig/kafka-connect-standalone'
@@ -195,14 +195,14 @@ class confluent::params {
       $ksql_environment_path = '/etc/sysconfig/ksql'
       $mirror_maker_environment_path_prefix = '/etc/sysconfig/mirrormaker-'
 
-      case $::operatingsystemmajrelease {
+      case $facts['os']['release']['major'] {
         '7': {
           $dist_repository_url = "http://packages.confluent.io/rpm/${confluent_version}/7"
           $repository_url = "http://packages.confluent.io/rpm/${confluent_version}"
           $gpgkey_url = "http://packages.confluent.io/rpm/${confluent_version}/archive.key"
         }
         default: {
-          fail("${::operatingsystem} ${::operatingsystemmajrelease} is not supported.")
+          fail("${facts['os']['name']} ${facts['os']['release']['major']} is not supported.")
         }
       }
     }
@@ -221,9 +221,7 @@ class confluent::params {
       $repository_url = "http://packages.confluent.io/deb/${confluent_version}"
     }
     default: {
-      fail("${::osfamily} is not currently supported.")
+      fail("${facts['os']['family']} is not currently supported.")
     }
   }
-
-
 }
