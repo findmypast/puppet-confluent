@@ -80,6 +80,7 @@ class confluent::kafka::broker (
 
   $default_config = {
     'broker.id'                                => $broker_id,
+    'node.id'                                  => $broker_id,
     'log.dirs'                                 => join(any2array($data_path), ','),
     'confluent.support.customer.id'            => 'anonymous',
     'confluent.support.metrics.enable'         => true,
